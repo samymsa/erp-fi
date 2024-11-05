@@ -1,2 +1,3 @@
 fastapi[standard]
 pre-commit
+pydantic
