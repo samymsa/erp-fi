@@ -33,6 +33,17 @@ Run the following command and follow the instructions:
 fastapi dev
 ```
 
+## Running Tests
+### Run Tests
+
+To run the tests, execute the following command from the root directory of the project:
+
+```bash
+pytest tests/
+```
+
+This will automatically discover and run all test files in the tests/ directory.
+
 ## Contributing
 
 ### Pre-commit hooks
