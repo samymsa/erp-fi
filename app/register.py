@@ -1,11 +1,11 @@
 import os
 
-import requests
+import httpx
 from dotenv import load_dotenv
 
 load_dotenv()
 
-response = requests.post(
+response = httpx.post(
     os.getenv("KEPI_URL") + "/register",
     json={"appKey": "FI", "url": os.getenv("APP_URL")},
 )
