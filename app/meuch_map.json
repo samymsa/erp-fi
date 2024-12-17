@@ -5,7 +5,7 @@
     "description": "Récupérer le chiffre d'affaire sur une période donnée",
     "type": "GET",
     "routeFormat": null,
-    "queryParams": "[debut,fin]",
+    "queryParams": ["debut", "fin"],
     "body": null
   },
   {
@@ -14,7 +14,7 @@
     "description": "Calculer la TVA a déclarer sur une période donnée",
     "type": "GET",
     "routeFormat": null,
-    "queryParams": "[debut,fin]",
+    "queryParams": ["debut", "fin"],
     "body": null
   },
   {
@@ -23,7 +23,7 @@
     "description": "Calculer la rentabilité d'un projet",
     "type": "GET",
     "routeFormat": null,
-    "queryParams": "[id_projet]",
+    "queryParams": ["id_projet"],
     "body": null
   }
 ]
