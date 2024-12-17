@@ -2,7 +2,7 @@
   {
     "key": "FI_GET_CA",
     "endpoint": "/ca",
-    "description": "Récupérer le chiffre d'affaire sur une période donnée",
+    "description": "Récupérer le chiffre d'affaires sur une période donnée",
     "type": "GET",
     "routeFormat": null,
     "queryParams": ["debut", "fin"],
@@ -11,7 +11,7 @@
   {
     "key": "FI_GET_TVA",
     "endpoint": "/tva",
-    "description": "Calculer la TVA a déclarer sur une période donnée",
+    "description": "Calculer la TVA à déclarer sur une période donnée",
     "type": "GET",
     "routeFormat": null,
     "queryParams": ["debut", "fin"],
