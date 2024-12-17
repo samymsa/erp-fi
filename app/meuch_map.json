@@ -1,0 +1,29 @@
+[
+  {
+    "key": "FI_GET_CA",
+    "endpoint": "/ca",
+    "description": "Récupérer le chiffre d'affaire sur une période donnée",
+    "type": "GET",
+    "routeFormat": null,
+    "queryParams": "[debut,fin]",
+    "body": null
+  },
+  {
+    "key": "FI_GET_TVA",
+    "endpoint": "/tva",
+    "description": "Calculer la TVA a déclarer sur une période donnée",
+    "type": "GET",
+    "routeFormat": null,
+    "queryParams": "[debut,fin]",
+    "body": null
+  },
+  {
+    "key": "FI_GET_RENTABILITE_PROJET",
+    "endpoint": "/rentabilite_projet",
+    "description": "Calculer la rentabilité d'un projet",
+    "type": "GET",
+    "routeFormat": null,
+    "queryParams": "[id_projet]",
+    "body": null
+  }
+]
