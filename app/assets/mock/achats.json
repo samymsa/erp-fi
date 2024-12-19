@@ -1,0 +1,35 @@
+[
+  {
+    "id_achat": 1,
+    "id_projet": "P001",
+    "produit": "Ordinateur portable",
+    "fournisseur": "TechWorld",
+    "quantite": 10,
+    "prix_unitaire": 1200.0,
+    "date": "2024-06-15",
+    "categorie": "Informatique",
+    "total": 12000.0
+  },
+  {
+    "id_achat": 2,
+    "id_projet": "P002",
+    "produit": "Chaise de bureau",
+    "fournisseur": "BureauConfort",
+    "quantite": 20,
+    "prix_unitaire": 150.0,
+    "date": "2024-06-16",
+    "categorie": "Mobilier",
+    "total": 3000.0
+  },
+  {
+    "id_achat": 3,
+    "id_projet": "P003",
+    "produit": "Tablette graphique",
+    "fournisseur": "GraphiPro",
+    "quantite": 5,
+    "prix_unitaire": 500.0,
+    "date": "2024-06-18",
+    "categorie": "Accessoires",
+    "total": 2500.0
+  }
+]

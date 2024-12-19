@@ -13,7 +13,5 @@ app.include_router(rentabilite_projet.router)
 
 @app.get("/meuch_map")
 async def meuch_map():
-    with open("app/meuch_map.json") as f:
-        data = json.load(f)
-
-    return data
+    with open("app/assets/meuch_map.json") as f:
+        return json.load(f)
