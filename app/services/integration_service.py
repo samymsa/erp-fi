@@ -10,7 +10,7 @@ class IntegrationService:
 
     async def action(
         self, key: str, params: dict | None = None, body: dict | None = None
-    ):
+    ) -> dict:
         payload = {
             "key": key,
             "params": params,
