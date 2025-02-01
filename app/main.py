@@ -1,8 +1,6 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 from fastapi.routing import APIRoute
 
-from app.dependencies import get_integration_service
-from app.services.integration_service import IntegrationService
 
 from .routers import ca, rentabilite_projet, tva
 
@@ -38,8 +36,3 @@ def get_route_info(route: APIRoute):
 @app.get("/meuch_map")
 async def meuch_map():
     return [get_route_info(route) for router in routers for route in router.routes]
-
-
-@app.get("/test")
-async def test(service: IntegrationService = Depends(get_integration_service)):
-    return await service.action("PR_PROJECTS_GET_ALL")
