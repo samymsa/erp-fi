@@ -1,16 +1,11 @@
-import os
-
 import httpx
-from dotenv import load_dotenv
+
+from app.config import settings
 
 
 class IntegrationService:
     def __init__(self):
-        load_dotenv()
-        self.base_url = os.getenv("KEPI_URL")
-        if not self.base_url:
-            raise ValueError("Missing KEPI_URL environment variable")
-
+        self.base_url = settings.kepi_url
         self.client = httpx.AsyncClient()
 
     async def action(
