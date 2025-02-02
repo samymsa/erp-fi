@@ -24,6 +24,7 @@ def get_route_info(route: APIRoute):
     key = f"FI_{method}_{route.endpoint.__name__.upper()}"
     endpoint = route.path.split("{")[0].rstrip("/")
     url_params = [param.name for param in route.dependant.path_params]
+    route_format = "/" + "/".join(url_params) if url_params else None
     query_params = [param.name for param in route.dependant.query_params]
     response = get_route_response_schema(route)
 
@@ -32,7 +33,7 @@ def get_route_info(route: APIRoute):
         "endpoint": endpoint,
         "description": route.description,
         "type": method,
-        "routeFormat": "/".join(url_params),
+        "routeFormat": route_format,
         "queryParams": query_params,
         "body": None,
         "response": response,
