@@ -10,5 +10,5 @@ class PRService:
 
     async def get_project_by_id(self, project_id: str):
         return await self.integration_service.action(
-            "PR_PROJECTS_GET_BY_ID", {"ID_projet": project_id}, {}
+            "PR_PROJECTS_GET_BY_ID", {"id": project_id}, {}
         )
