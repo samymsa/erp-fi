@@ -1,5 +1,8 @@
+from inspect import isclass
+
 from fastapi import Depends, FastAPI
 from fastapi.routing import APIRoute
+from pydantic import BaseModel
 
 from app.dependencies import get_integration_service
 from app.routers import compte_resultat
@@ -20,9 +23,7 @@ def get_route_info(route: APIRoute):
     method = next(iter(route.methods))
     key = f"FI_{method}_{route.endpoint.__name__.upper()}"
     query_params = [param.name for param in route.dependant.query_params]
-    response = (
-        route.response_model.model_json_schema() if route.response_model else None
-    )
+    response = get_route_response_schema(route)
 
     return {
         "key": key,
@@ -34,6 +35,16 @@ def get_route_info(route: APIRoute):
         "body": None,
         "response": response,
     }
+
+
+def get_route_response_schema(route: APIRoute):
+    if not route.response_model:
+        return None
+
+    if isclass(route.response_model) and issubclass(route.response_model, BaseModel):
+        return route.response_model.model_json_schema()
+
+    return route.response_model.__name__
 
 
 @app.get("/meuch_map")
