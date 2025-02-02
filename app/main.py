@@ -22,15 +22,17 @@ for router in routers:
 def get_route_info(route: APIRoute):
     method = next(iter(route.methods))
     key = f"FI_{method}_{route.endpoint.__name__.upper()}"
+    endpoint = route.path.split("{")[0].rstrip("/")
+    url_params = [param.name for param in route.dependant.path_params]
     query_params = [param.name for param in route.dependant.query_params]
     response = get_route_response_schema(route)
 
     return {
         "key": key,
-        "endpoint": route.path,
+        "endpoint": endpoint,
         "description": route.description,
         "type": method,
-        "routeFormat": None,
+        "routeFormat": "/".join(url_params),
         "queryParams": query_params,
         "body": None,
         "response": response,
