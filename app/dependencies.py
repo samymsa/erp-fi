@@ -9,8 +9,10 @@ def get_integration_service():
     return IntegrationService()
 
 
-def get_va_service():
-    return VAService()
+def get_va_service(
+    integration_service: IntegrationService = Depends(get_integration_service),
+):
+    return VAService(integration_service)
 
 
 def get_pr_service(

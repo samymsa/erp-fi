@@ -2,18 +2,18 @@ from datetime import date
 
 import httpx
 
+from app.services.integration_service import IntegrationService
+
 
 class VAService:
-    base_url = "https://livl-erp-api.goudale.tgimenez.fr/api/"
-
-    def __init__(self):
+    def __init__(self, integration_service: IntegrationService):
+        self.integration_service = integration_service
         self.client = httpx.AsyncClient()
 
     async def client_payments(
         self, start_date: date = date.min, end_date: date = date.max
     ):
-        response = await self.client.get(self.base_url + "client-payments")
-        data = response.json()
+        data = await self.integration_service.action("VA_LIST_CLIENT_PAYMENT")
         filtered_data = [
             payment
             for payment in data
@@ -27,8 +27,7 @@ class VAService:
     async def supplier_payments(
         self, start_date: date = date.min, end_date: date = date.max
     ):
-        response = await self.client.get(self.base_url + "supplier-payments")
-        data = response.json()
+        data = await self.integration_service.action("VA_LIST_SUPPLIER_PAYMENT")
         filtered_data = [
             payment
             for payment in data
