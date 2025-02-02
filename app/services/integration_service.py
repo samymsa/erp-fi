@@ -17,5 +17,12 @@ class IntegrationService:
             "body": body,
         }
         response = await self.client.post(f"{self.base_url}/action", json=payload)
-        response.raise_for_status()
+        return response.json()
+
+    async def register(self) -> dict:
+        response = await self.client.post(
+            f"{self.base_url}/register",
+            json={"appKey": "FI", "url": settings.app_url},
+            timeout=None,
+        )
         return response.json()
