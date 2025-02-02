@@ -2,13 +2,14 @@ from fastapi import Depends, FastAPI
 from fastapi.routing import APIRoute
 
 from app.dependencies import get_integration_service
+from app.routers import compte_resultat
 from app.services.integration_service import IntegrationService
 
 from .routers import ca, rentabilite_projet, tva
 
 app = FastAPI()
 
-routers = [ca.router, tva.router, rentabilite_projet.router]
+routers = [ca.router, tva.router, rentabilite_projet.router, compte_resultat.router]
 
 
 for router in routers:
