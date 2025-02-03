@@ -1,7 +1,10 @@
 from inspect import isclass
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request
+from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRoute
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
 from app.dependencies import get_integration_service
@@ -11,6 +14,9 @@ from app.services.integration_service import IntegrationService
 from .routers import ca, rentabilite_projet, tva
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
 
 routers = [ca.router, tva.router, rentabilite_projet.router, compte_resultat.router]
 
@@ -60,3 +66,8 @@ async def register(
     integration_service: IntegrationService = Depends(get_integration_service),
 ):
     return await integration_service.register()
+
+
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse(request=request, name="index.html")
