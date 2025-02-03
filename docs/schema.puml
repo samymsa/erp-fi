@@ -1,0 +1,50 @@
+@startuml schema
+title Schéma des interactions de l'application FI
+
+' Intégration
+package "I (Intégration)" {
+    interface "VA_LIST_CLIENT_PAYMENT" as VA_Client
+    interface "VA_LIST_SUPPLIER_PAYMENT" as VA_Supplier
+    interface "PR_PROJECTS_GET_ALL" as PR_All
+    interface "PR_PROJECTS_GET_BY_ID" as PR_ByID
+}
+
+
+
+' FI
+package "FI (Finance)" {
+    component "Chiffre d'affaires" as CA
+    component "Compte de résultat" as CR
+    component "TVA"
+    component "Rentabilité des projets" as Rentabilité
+}
+
+' VA
+package "VA (Ventes & Achats)" {
+    component "Client Payment" as Client_Payment
+    component "Supplier Payment" as Supplier_Payment
+}
+Client_Payment -- VA_Client
+Supplier_Payment -- VA_Supplier
+
+' PR
+package "PR (Projets)" {
+    component "Projects" as Projects
+}
+Projects -- PR_All
+Projects -- PR_ByID
+
+' Interactions
+VA_Client ---> CA
+
+VA_Client ---> TVA
+VA_Supplier ---> TVA
+
+CA ---> CR
+VA_Supplier ---> CR
+PR_All ---> CR
+
+PR_All ---> Rentabilité
+PR_ByID ---> Rentabilité
+
+@enduml

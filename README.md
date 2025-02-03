@@ -2,6 +2,10 @@
 
 This project is an ERP module for financial management.
 
+Below is a diagram representing the application's interactions with other ERP modules.
+
+![ERP - FI](docs/schema.png)
+
 ## Setup
 
 ### Python version
@@ -34,6 +38,7 @@ fastapi dev
 ```
 
 ## Running Tests
+
 ### Run Tests
 
 To run the tests, execute the following command from the root directory of the project:
